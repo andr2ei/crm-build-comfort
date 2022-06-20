@@ -1,0 +1,1 @@
+alter table statuses add unique (status_name);
