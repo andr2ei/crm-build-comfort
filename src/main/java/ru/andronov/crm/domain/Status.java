@@ -1,9 +1,6 @@
 package ru.andronov.crm.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,8 +8,7 @@ import javax.persistence.*;
 @Table(name = "statuses")
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@Setter
+@Data
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
