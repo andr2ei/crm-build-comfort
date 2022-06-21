@@ -1,7 +1,9 @@
 package ru.andronov.crm.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -9,6 +11,8 @@ import java.sql.Date;
 @Data
 @Entity
 @Table(name = "leads")
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Lead {
     @Id
