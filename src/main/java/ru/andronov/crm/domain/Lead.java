@@ -44,8 +44,8 @@ public class Lead {
     @Column(name = "discount")
     private int discount;
 
-    @OneToOne(targetEntity = Status.class,
-            fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Status.class,
+               fetch = FetchType.EAGER)
     @JoinColumn(name = "status_id")
     private Status status;
 

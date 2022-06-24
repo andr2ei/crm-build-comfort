@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-@Transactional
 public class LeadRepository implements ILeadRepository {
 
     private final EntityManager em;
