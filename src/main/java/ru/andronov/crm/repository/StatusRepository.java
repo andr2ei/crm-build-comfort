@@ -1,11 +1,11 @@
 package ru.andronov.crm.repository;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.andronov.crm.domain.Status;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -13,6 +13,14 @@ import java.util.List;
 public class StatusRepository implements IStatusRepository {
     @PersistenceContext
     private EntityManager em;
+
+    @Override
+    public Status getById(int id) {
+        var ql = "SELECT s FROM Status s WHERE s.id = :id";
+        TypedQuery<Status> query = em.createQuery(ql, Status.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
 
     @Override
     public Status save(Status status) {

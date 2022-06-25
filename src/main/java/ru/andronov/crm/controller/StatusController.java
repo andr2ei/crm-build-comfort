@@ -8,22 +8,22 @@ import ru.andronov.crm.service.IStatusService;
 import java.util.List;
 
 @RestController()
-@RequestMapping(path = "api/v1/statuses")
+@RequestMapping(path = "api/v1/status")
 @RequiredArgsConstructor
 public class StatusController {
     private final IStatusService statusService;
 
-    @GetMapping
+    @GetMapping(path = "all")
     public List<Status> getAllStatuses() {
         return statusService.getAll();
     }
 
-    @PostMapping
+    @PostMapping(path = "create")
     public Status addNewStatus(@RequestBody Status status) {
         return statusService.addStatus(status);
     }
 
-    @PutMapping
+    @PutMapping(path = "edit")
     public void updateStatus(@RequestBody Status status) {
         statusService.update(status);
     }
