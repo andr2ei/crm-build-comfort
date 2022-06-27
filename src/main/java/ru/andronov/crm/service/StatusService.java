@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.andronov.crm.domain.Status;
+import ru.andronov.crm.repository.IStatusRepository;
 import ru.andronov.crm.repository.StatusRepository;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
         propagation = Propagation.REQUIRED)
 @Slf4j
 public class StatusService implements IStatusService {
-    private final StatusRepository statusRepository;
+    private final IStatusRepository statusRepository;
 
     @Override
     public Status addStatus(Status status) {
