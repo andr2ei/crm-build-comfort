@@ -8,7 +8,7 @@ public interface IProductRepository {
 
     Product save(Product product);
 
-    void update(Product product);
+    Product update(Product product);
 
     List<Product> findAllProductsByLeadId(int lead_id);
 

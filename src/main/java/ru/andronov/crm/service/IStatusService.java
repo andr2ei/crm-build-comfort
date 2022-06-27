@@ -8,7 +8,7 @@ public interface IStatusService {
 
     Status addStatus(Status status);
 
-    void update(Status status);
+    Status update(Status status);
 
     List<Status> getAll();
 

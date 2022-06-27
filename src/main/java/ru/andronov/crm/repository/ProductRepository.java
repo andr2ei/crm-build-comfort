@@ -27,13 +27,13 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void update(Product product) {
-        em.merge(product);
+    public Product update(Product product) {
+        return em.merge(product);
     }
 
     @Override
     public List<Product> findAllProductsByLeadId(int lead_id) {
-        var ql = "SELECT p FROM Product p WHERE p.isService = false AND p.leadId = :lead_id";
+        var ql = "SELECT p FROM Product p WHERE p.service = false AND p.leadId = :lead_id";
         TypedQuery<Product> query = em.createQuery(ql, Product.class);
         query.setParameter("lead_id", lead_id);
         log.debug("Querying by plql {}", ql);

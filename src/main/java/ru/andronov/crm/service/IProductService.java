@@ -8,7 +8,7 @@ public interface IProductService {
 
     Product create(Product product);
 
-    void update(Product product);
+    Product update(Product product);
 
     List<Product> getProductsByLeadId(int leadId);
 

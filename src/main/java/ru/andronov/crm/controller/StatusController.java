@@ -24,8 +24,8 @@ public class StatusController {
     }
 
     @PutMapping(path = "edit")
-    public void updateStatus(@RequestBody Status status) {
-        statusService.update(status);
+    public Status updateStatus(@RequestBody Status status) {
+        return statusService.update(status);
     }
 
 }

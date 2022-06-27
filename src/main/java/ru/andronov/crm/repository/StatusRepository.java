@@ -29,8 +29,8 @@ public class StatusRepository implements IStatusRepository {
     }
 
     @Override
-    public void update(Status status) {
-        em.merge(status);
+    public Status update(Status status) {
+        return em.merge(status);
     }
 
     @Override

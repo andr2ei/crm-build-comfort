@@ -30,7 +30,7 @@ public class LeadController {
     }
 
     @PutMapping(path = "edit")
-    public void update(@RequestBody Lead lead) {
-        leadService.update(lead);
+    public Lead update(@RequestBody Lead lead) {
+        return leadService.update(lead);
     }
 }

@@ -8,7 +8,7 @@ public interface ILeadService {
 
     Lead create(Lead lead);
 
-    void update(Lead lead);
+    Lead update(Lead lead);
 
     List<Lead> getAll();
 

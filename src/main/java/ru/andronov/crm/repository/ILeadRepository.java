@@ -7,7 +7,7 @@ import java.util.List;
 public interface ILeadRepository {
 
     Lead save(Lead lead);
-    void update(Lead lead);
+    Lead update(Lead lead);
     List<Lead> findAll();
     List<Lead> findAllByStatusId(int statusId);
 }

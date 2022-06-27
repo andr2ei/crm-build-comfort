@@ -35,8 +35,8 @@ public class ProductController {
     }
 
     @PutMapping(path = "product/edit")
-    public void updateProduct(@RequestBody Product product) {
-        productService.update(product);
+    public Product updateProduct(@RequestBody Product product) {
+        return productService.update(product);
     }
 
     @DeleteMapping(path = "product/{id}")

@@ -27,9 +27,9 @@ public class StatusService implements IStatusService {
     }
 
     @Override
-    public void update(Status status) {
+    public Status update(Status status) {
         log.info("Updating status with id {} and name {}", status.getId(), status.getName());
-        statusRepository.update(status);
+        return statusRepository.update(status);
     }
 
     @Override

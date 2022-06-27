@@ -28,8 +28,8 @@ public class LeadService implements ILeadService {
             isolation = Isolation.READ_UNCOMMITTED,
             propagation = Propagation.REQUIRED)
     @Override
-    public void update(Lead lead) {
-        leadRepository.update(lead);
+    public Lead update(Lead lead) {
+        return leadRepository.update(lead);
     }
 
     @Transactional(

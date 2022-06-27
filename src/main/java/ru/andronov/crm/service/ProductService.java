@@ -28,8 +28,8 @@ public class ProductService  implements  IProductService {
             isolation = Isolation.READ_UNCOMMITTED,
             propagation = Propagation.REQUIRED)
     @Override
-    public void update(Product product) {
-        productRepository.update(product);
+    public Product update(Product product) {
+        return productRepository.update(product);
     }
 
     @Transactional(

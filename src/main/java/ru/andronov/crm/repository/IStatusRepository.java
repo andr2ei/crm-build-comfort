@@ -8,6 +8,6 @@ public interface IStatusRepository {
 
     Status getById(int id);
     Status save(Status status);
-    void update(Status status);
+    Status update(Status status);
     List<Status> findAll();
 }

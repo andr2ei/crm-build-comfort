@@ -22,8 +22,8 @@ public class LeadRepository implements ILeadRepository {
     }
 
     @Override
-    public void update(Lead lead) {
-        em.merge(lead);
+    public Lead update(Lead lead) {
+        return em.merge(lead);
     }
 
     @Override
