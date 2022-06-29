@@ -3,7 +3,6 @@ package ru.andronov.crm.repository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.andronov.crm.domain.Lead;
 
 import javax.persistence.EntityManager;
