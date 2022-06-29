@@ -10,7 +10,7 @@ public interface ILeadService {
 
     Lead update(Lead lead);
 
-    List<Lead> getAll();
+    List<Lead> getAll(int pageNumber, int pageSize);
 
     List<Lead> getByStatusId(int statusId);
 }

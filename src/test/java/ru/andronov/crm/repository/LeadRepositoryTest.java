@@ -68,7 +68,7 @@ class LeadRepositoryTest {
 
     @Test
     void findAll() {
-        var all = leadRepository.findAll();
+        var all = leadRepository.findAll(1, 10);
         Assertions.assertEquals(3, all.size());
     }
 

@@ -1,6 +1,7 @@
 package ru.andronov.crm.repository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.andronov.crm.domain.Lead;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
+@Slf4j
 public class LeadRepository implements ILeadRepository {
 
     private final EntityManager em;
@@ -27,9 +29,12 @@ public class LeadRepository implements ILeadRepository {
     }
 
     @Override
-    public List<Lead> findAll() {
-        var findAllQuery = "SELECT l FROM Lead l";
-        return em.createQuery(findAllQuery, Lead.class).getResultList();
+    public List<Lead> findAll(int pageNumber, int pageSize) {
+        var findAllQuery = "SELECT l FROM Lead l ORDER BY l.status.id";
+        var query = em.createQuery(findAllQuery, Lead.class)
+                .setFirstResult(pageNumber * pageSize - pageSize)
+                .setMaxResults(pageSize);
+        return query.getResultList();
     }
 
     @Override

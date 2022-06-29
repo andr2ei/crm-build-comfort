@@ -8,6 +8,6 @@ public interface ILeadRepository {
 
     Lead save(Lead lead);
     Lead update(Lead lead);
-    List<Lead> findAll();
+    List<Lead> findAll(int pageNumber, int pageSize);
     List<Lead> findAllByStatusId(int statusId);
 }

@@ -15,8 +15,9 @@ public class LeadController {
     private final ILeadService leadService;
 
     @GetMapping(path = "all")
-    public List<Lead> getAll() {
-        return leadService.getAll();
+    public List<Lead> getAll(@RequestParam("pageNumber") int pageNumber,
+                             @RequestParam("pageSize") int pageSize) {
+        return leadService.getAll(pageNumber, pageSize);
     }
 
     @GetMapping(path = "all/status/{statusId}")

@@ -37,8 +37,8 @@ public class LeadService implements ILeadService {
             propagation = Propagation.REQUIRED,
             readOnly = true)
     @Override
-    public List<Lead> getAll() {
-        return leadRepository.findAll();
+    public List<Lead> getAll(int pageNumber, int pageSize) {
+        return leadRepository.findAll(pageNumber, pageSize);
     }
 
     @Transactional(
