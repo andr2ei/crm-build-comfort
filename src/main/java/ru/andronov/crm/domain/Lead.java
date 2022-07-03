@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -51,5 +52,10 @@ public class Lead {
 
     @Column(name = "creation_date")
     private Date creationDate;
+
+    @OneToMany(targetEntity = Product.class,
+            fetch = FetchType.EAGER)
+    @JoinColumn(name = "lead_id")
+    private List<Product> products;
 
 }
