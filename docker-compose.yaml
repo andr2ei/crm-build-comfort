@@ -1,9 +1,13 @@
 version: '3'
 services:
-#  crm-build-comfort:
-#    image: crm-build-comfort:1.1
-#    ports:
-#      - 8080:8080
+  crm-build-comfort:
+    image: crm-build-comfort:1.2
+    ports:
+      - 8080:8080
+  crm-build-comfort-ui:
+    image: crm-build-comfort-ui:1.0
+    ports:
+      - 8082:8080
   postgres-db:
     image: postgres:14.3
     ports:
