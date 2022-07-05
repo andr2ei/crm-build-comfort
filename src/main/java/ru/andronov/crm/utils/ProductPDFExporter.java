@@ -68,6 +68,10 @@ public class ProductPDFExporter {
 
             document.open();
 
+            Image jpg = Image.getInstance("src/main/resources/cat_on_the_window.jpg");
+            jpg.scaleAbsolute(65f, 80f);
+            document.add(jpg);
+
             var firstPar = new Paragraph("Коммерческое предложение");
             firstPar.setAlignment(Paragraph.ALIGN_CENTER);
             document.add(firstPar);
