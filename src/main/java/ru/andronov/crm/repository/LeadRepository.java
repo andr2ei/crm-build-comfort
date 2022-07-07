@@ -27,6 +27,12 @@ public class LeadRepository implements ILeadRepository {
         return em.merge(lead);
     }
 
+    public List<Lead> findAllWithLastStatus() {
+        var findAllQuery = "SELECT l FROM Lead l WHERE l.status.id = " +
+                "(SELECT MAX(id) FROM Status s)";
+        return em.createQuery(findAllQuery, Lead.class).getResultList();
+    }
+
     @Override
     public List<Lead> findAll(int pageNumber, int pageSize) {
         var findAllQuery = "SELECT l FROM Lead l ORDER BY l.status.id";

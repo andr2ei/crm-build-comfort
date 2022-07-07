@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.andronov.crm.domain.Lead;
+import ru.andronov.crm.dto.IncomePerMonthDTO;
 import ru.andronov.crm.service.ILeadService;
 
 import java.util.List;
@@ -15,6 +16,11 @@ import java.util.List;
 public class LeadController {
 
     private final ILeadService leadService;
+
+    @GetMapping(path = "all/income")
+    public List<IncomePerMonthDTO> getAllIncomePerMonth() {
+        return leadService.getAllIncomePerMonth();
+    }
 
     @GetMapping(path = "all")
     public List<Lead> getAll() {

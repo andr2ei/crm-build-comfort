@@ -58,4 +58,20 @@ public class Lead {
     @JoinColumn(name = "lead_id")
     private List<Product> products;
 
+    public int creationMonth() {
+        return this.creationDate.toLocalDate().getMonth().getValue();
+    }
+
+    public int creationYear() {
+        return this.creationDate.toLocalDate().getYear();
+    }
+
+    public double totalCostWithDiscount() {
+        var totalCost = products
+                .stream()
+                .map(p -> p.getCount() * p.getPrice())
+                .reduce(0.0, Double::sum);
+        var totalCostWithDiscount = totalCost * (1 - discount / 100.0);
+        return Math.round(totalCostWithDiscount * 100) / 100.0;
+    }
 }
