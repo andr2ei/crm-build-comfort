@@ -1,1 +1,0 @@
-alter table products alter column price set data type decimal(10,2);

@@ -1,1 +1,0 @@
-alter table leads alter column trade_price set data type decimal(10,2);

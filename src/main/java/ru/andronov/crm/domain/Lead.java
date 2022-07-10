@@ -53,6 +53,27 @@ public class Lead {
     @Column(name = "creation_date")
     private Date creationDate;
 
+    @Column(name = "completed_date")
+    private Date completedDate;
+
+    @Column(name = "comment")
+    private String comment;
+
+    @Column(name = "storage_unit_address")
+    private String storageUnitAddress;
+
+    @Column(name = "prepay")
+    private double prepay;
+
+    @Column(name = "prepay_type")
+    private String prepayType;
+
+    @Column(name = "surcharge")
+    private double surcharge;
+
+    @Column(name = "surcharge_type")
+    private String surchargeType;
+
     @OneToMany(targetEntity = Product.class,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "lead_id")

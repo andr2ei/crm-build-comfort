@@ -86,9 +86,16 @@ public class ProductPDFExporter {
 
             var totalCost = countTotalCost();
             var totalCostWithDiscount = countTotalCostWithDiscount();
-            var lastPar = new Paragraph("Итого " + totalCost + ". Итого со скидкой " + discount + "% " + totalCostWithDiscount);
-            lastPar.setAlignment(Paragraph.ALIGN_CENTER);
-            document.add(lastPar);
+            var totalDiscount = Math.round(totalCost * discount) / 100.0;
+            if (discount > 0) {
+                var lastPar = new Paragraph("Сумма без скидки " + totalCost + ". Сумма скидки " + discount + "% " + totalDiscount + ". Сумма со скидкой " + totalCostWithDiscount);
+                lastPar.setAlignment(Paragraph.ALIGN_CENTER);
+                document.add(lastPar);
+            } else {
+                var lastPar = new Paragraph("Сумма " + totalCost);
+                lastPar.setAlignment(Paragraph.ALIGN_CENTER);
+                document.add(lastPar);
+            }
         }
     }
 }

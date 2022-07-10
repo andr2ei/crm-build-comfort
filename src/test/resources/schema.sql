@@ -4,7 +4,7 @@ create table statuses (
 );
 
 create table leads (
-    lead_id int not null primary key auto_increment,
+    lead_id identity not null primary key,
     first_name varchar(30) not null,
     last_name varchar(30) not null,
     phone varchar(20) not null,
@@ -15,6 +15,13 @@ create table leads (
     discount smallint not null default 0,
     status_id int not null default 1,
     creation_date timestamp,
+    comment varchar(1000) default '',
+    storage_unit_address varchar(1000) default '',
+    prepay decimal(10,2) default 0.0,
+    prepay_type varchar(20) default '',
+    surcharge decimal(10,2) default 0.0,
+    surcharge_type varchar(20) default '',
+    completed_date timestamp,
     foreign key (status_id) references statuses (status_id)
 );
 
