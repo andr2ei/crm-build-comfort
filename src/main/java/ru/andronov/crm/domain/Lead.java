@@ -79,12 +79,12 @@ public class Lead {
     @JoinColumn(name = "lead_id")
     private List<Product> products;
 
-    public int creationMonth() {
-        return this.creationDate.toLocalDate().getMonth().getValue();
+    public int completionMonth() {
+        return this.completedDate.toLocalDate().getMonth().getValue();
     }
 
-    public int creationYear() {
-        return this.creationDate.toLocalDate().getYear();
+    public int completionYear() {
+        return this.completedDate.toLocalDate().getYear();
     }
 
     public double totalCostWithDiscount() {

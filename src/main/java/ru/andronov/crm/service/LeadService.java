@@ -10,6 +10,8 @@ import ru.andronov.crm.dto.IncomePerMonthDTO;
 import ru.andronov.crm.dto.Tuple;
 import ru.andronov.crm.repository.ILeadRepository;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +22,14 @@ import java.util.stream.Collectors;
 public class LeadService implements ILeadService {
 
     private final ILeadRepository leadRepository;
+    private final IStatusService statusService;
 
     @Transactional(
             isolation = Isolation.READ_UNCOMMITTED,
             propagation = Propagation.REQUIRED)
     @Override
     public Lead create(Lead lead) {
+        setCompletionDate(lead);
         return leadRepository.save(lead);
     }
 
@@ -34,6 +38,7 @@ public class LeadService implements ILeadService {
             propagation = Propagation.REQUIRED)
     @Override
     public Lead update(Lead lead) {
+        setCompletionDate(lead);
         return leadRepository.update(lead);
     }
 
@@ -59,7 +64,7 @@ public class LeadService implements ILeadService {
     public List<IncomePerMonthDTO> getAllIncomePerMonth() {
         Map<Tuple<Integer>, List<Lead>> collectedMap = leadRepository.findAllWithLastStatus()
                 .stream()
-                .collect(Collectors.groupingBy(lead -> new Tuple<>(lead.creationYear(), lead.creationMonth())));
+                .collect(Collectors.groupingBy(lead -> new Tuple<>(lead.completionYear(), lead.completionMonth())));
         return collectedMap.entrySet().stream()
                 .map(entry -> {
                     var year = entry.getKey().getFirst();
@@ -78,5 +83,13 @@ public class LeadService implements ILeadService {
                         .comparingInt(IncomePerMonthDTO::getYear).reversed()
                         .thenComparingInt(IncomePerMonthDTO::getMonth).reversed())
                 .collect(Collectors.toList());
+    }
+
+    private void setCompletionDate(Lead lead) {
+        var statuses = statusService.getAll();
+        var lastStatus = statuses.get(statuses.size() - 1);
+        if (lead.getStatus().equals(lastStatus) && lead.getCompletedDate() == null) {
+            lead.setCompletedDate(Date.valueOf(LocalDate.now()));
+        }
     }
 }
