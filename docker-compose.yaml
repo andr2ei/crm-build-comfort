@@ -1,11 +1,11 @@
 version: '3'
 services:
 #  crm-build-comfort:
-#    image: andr2ei/crm-build-comfort:1.6
+#    image: andr2ei/crm-build-comfort:1.8
 #    ports:
 #      - 8080:8080
 #  crm-build-comfort-ui:
-#    image: andr2ei/crm-build-comfort-ui:1.6
+#    image: andr2ei/crm-build-comfort-ui:1.8
 #    ports:
 #      - 8082:8080
   postgres-db:
